@@ -16,8 +16,13 @@ import {
     IDropdownOption,
 } from "@fluentui/react/lib/Dropdown";
 import { IChartDropdownOption } from "./IChartDropdownOption";
+import GChart from "react-gauge-chart";
+import { BiChartType } from "./BiChartType";
+import GaugeChart from "../charts/GaugeChart";
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
+
+const Gauge: BiChartType = "gauge";
 
 const dropdownControlledExampleOptions = [
     {
@@ -27,6 +32,7 @@ const dropdownControlledExampleOptions = [
     },
     { key: "bar", text: "Bar Chart", chartType: ChartType.Bar },
     { key: "doughnut", text: "Doughnut Chart", chartType: ChartType.Doughnut },
+    { key: "gauge", text: "Gauge Chart", chartType: Gauge },
 ];
 
 export default class Bi extends React.Component<IBiProps, IBiState> {
@@ -56,6 +62,7 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
         const cardStyle = {
             root: {
                 width: "100%",
+                padding: 10,
                 maxWidth: "screen",
             },
         };
@@ -125,10 +132,12 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
                             }}
                         />
                     )}
+
+                    {selectedChart.chartType === Gauge && <GaugeChart />}
                 </CardItem>
                 <CardItem>
                     <Dropdown
-                        label="Controlled example"
+                        label="Select Chart Type"
                         selectedKey={
                             selectedChart ? selectedChart.key : undefined
                         }

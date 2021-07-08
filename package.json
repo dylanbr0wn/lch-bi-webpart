@@ -20,7 +20,9 @@
     "@pnp/spfx-controls-react": "^3.2.1",
     "office-ui-fabric-react": "7.156.0",
     "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "react-dom": "16.9.0",
+    "react-gauge-chart": "^0.3.0",
+    "reaviz": "^10.3.0"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.7": "0.2.3",
