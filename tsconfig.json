@@ -22,11 +22,10 @@
       "webpack-env"
     ],
     "lib": [
-      "es5",
       "dom",
-      "es2015.collection",
-      "es2015.promise"
-    ]
+      "dom.iterable",
+      "esnext"
+    ],
   },
   "include": [
     "src/**/*.ts",

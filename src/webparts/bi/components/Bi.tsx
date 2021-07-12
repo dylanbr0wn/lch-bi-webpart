@@ -19,10 +19,12 @@ import { IChartDropdownOption } from "./IChartDropdownOption";
 import GChart from "react-gauge-chart";
 import { BiChartType } from "./BiChartType";
 import GaugeChart from "../charts/GaugeChart";
+import HeatmapChart from "../charts/HeatMap";
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 
 const Gauge: BiChartType = "gauge";
+const HeatMap: BiChartType = "heatmap";
 
 const dropdownControlledExampleOptions = [
     {
@@ -33,6 +35,7 @@ const dropdownControlledExampleOptions = [
     { key: "bar", text: "Bar Chart", chartType: ChartType.Bar },
     { key: "doughnut", text: "Doughnut Chart", chartType: ChartType.Doughnut },
     { key: "gauge", text: "Gauge Chart", chartType: Gauge },
+    { key: "heatmap", text: "Heat Map", chartType: HeatMap },
 ];
 
 export default class Bi extends React.Component<IBiProps, IBiState> {
@@ -134,6 +137,7 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
                     )}
 
                     {selectedChart.chartType === Gauge && <GaugeChart />}
+                    {selectedChart.chartType === HeatMap && <HeatmapChart height={300} width={700}  />}
                 </CardItem>
                 <CardItem>
                     <Dropdown

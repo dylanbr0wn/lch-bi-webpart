@@ -1,0 +1,8 @@
+.visx-heatmap-rect{
+    stroke: none;
+}
+
+.visx-heatmap-rect:hover {
+    stroke: white;
+    stroke-width: 1px;
+}

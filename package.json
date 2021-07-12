@@ -4,9 +4,10 @@
   "private": true,
   "main": "lib/index.js",
   "scripts": {
-    "build": "gulp bundle",
+    "build": "gulp bundle --ship",
     "clean": "gulp clean",
     "serve": "gulp serve",
+    "package": "gulp package-solution --ship",
     "test": "gulp test"
   },
   "dependencies": {
@@ -18,6 +19,12 @@
     "@microsoft/sp-property-pane": "1.12.1",
     "@microsoft/sp-webpart-base": "1.12.1",
     "@pnp/spfx-controls-react": "^3.2.1",
+    "@visx/event": "^1.7.0",
+    "@visx/group": "^1.7.0",
+    "@visx/heatmap": "^1.7.0",
+    "@visx/mock-data": "^1.7.0",
+    "@visx/scale": "^1.14.0",
+    "@visx/tooltip": "^1.7.2",
     "office-ui-fabric-react": "7.156.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
