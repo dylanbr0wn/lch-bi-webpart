@@ -20,6 +20,7 @@ import GChart from "react-gauge-chart";
 import { BiChartType } from "./BiChartType";
 import GaugeChart from "../charts/GaugeChart";
 import HeatmapChart from "../charts/HeatMap";
+import SpeedoChart from "../charts/SpeedoChart";
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 
@@ -91,7 +92,7 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
         return (
             <Card styles={cardStyle}>
                 <CardItem>
-                    {selectedChart.chartType === ChartType.Bar && (
+                    {/* {selectedChart.chartType === ChartType.Bar && (
                         <ChartControl
                             type={ChartType.Bar}
                             data={{
@@ -137,9 +138,9 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
                     )}
 
                     {selectedChart.chartType === Gauge && <GaugeChart />}
-                    {selectedChart.chartType === HeatMap && <HeatmapChart height={300} width={700}  />}
+                    {selectedChart.chartType === HeatMap && <HeatmapChart height={300} width={700}  />} */}
                 </CardItem>
-                <CardItem>
+                {/* <CardItem>
                     <Dropdown
                         label="Select Chart Type"
                         selectedKey={
@@ -151,7 +152,8 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
                         options={dropdownControlledExampleOptions}
                         styles={dropdownStyles}
                     />
-                </CardItem>
+                </CardItem> */}
+                <SpeedoChart />
             </Card>
         );
     }
