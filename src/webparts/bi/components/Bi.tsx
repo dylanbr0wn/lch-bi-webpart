@@ -21,6 +21,7 @@ import { BiChartType } from "./BiChartType";
 import GaugeChart from "../charts/GaugeChart";
 import HeatmapChart from "../charts/HeatMap";
 import SpeedoChart from "../charts/SpeedoChart";
+import axios from "axios";
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 
@@ -43,6 +44,7 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
     public constructor(props: IBiProps) {
         super(props);
         this.onChange = this.onChange.bind(this);
+        this.getData = this.getData.bind(this);
         this.state = {
             chartKind: ChartType.Bar,
             selectedChart: {
@@ -50,7 +52,34 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
                 text: "Bar Chart",
                 chartType: ChartType.Bar,
             },
+            max: {
+                NumberEntered: 0,
+                MonthEntered: ''
+            },
+            min:{
+                NumberEntered: 0,
+                MonthEntered: ''
+            },
+            current: {
+                NumberEntered: 0,
+                MonthEntered: ''
+            },
+            speedoChartReady: false
         };
+    }
+
+    async getData(){
+        const {data} = await axios.get("https://lch-sharepoint-api.azurewebsites.net/api")
+
+        this.setState({max: data.maxMonth});
+        this.setState({min: data.minMonth});
+        this.setState({current: data.currentMonth});
+        this.setState({speedoChartReady: true});
+    }
+
+
+    componentDidMount(){
+        this.getData()
     }
 
     public onChange(
@@ -88,9 +117,10 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
                 },
             ],
         };
-        let { selectedChart } = this.state;
+        let { selectedChart, max, min, current, speedoChartReady } = this.state;
         return (
             <Card styles={cardStyle}>
+
                 <CardItem>
                     {/* {selectedChart.chartType === ChartType.Bar && (
                         <ChartControl
@@ -139,6 +169,10 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
 
                     {selectedChart.chartType === Gauge && <GaugeChart />}
                     {selectedChart.chartType === HeatMap && <HeatmapChart height={300} width={700}  />} */}
+                    {speedoChartReady &&
+                        <SpeedoChart max={max} min={min} current={current}/>
+                    }
+                    
                 </CardItem>
                 {/* <CardItem>
                     <Dropdown
@@ -153,7 +187,7 @@ export default class Bi extends React.Component<IBiProps, IBiState> {
                         styles={dropdownStyles}
                     />
                 </CardItem> */}
-                <SpeedoChart />
+                
             </Card>
         );
     }
